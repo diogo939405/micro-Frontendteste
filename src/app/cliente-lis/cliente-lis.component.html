@@ -1,1 +1,31 @@
-<p>cliente-lis works!</p>
+<div class="card">
+    <p-table [value]="products" styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '80rem' }">>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Quantity</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{ product.description }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.repositoryGit }}</td>
+                <td>{{ product.urlDoc }}</td>
+                <td>
+                    <div class="icons">
+                        <span class="material-icons" id="lixo">delete</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="icons">
+                        <span class="material-icons" id="edit">edit</span>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+

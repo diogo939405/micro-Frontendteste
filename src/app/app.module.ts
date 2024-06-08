@@ -13,7 +13,7 @@ import { ClienteLisComponent } from './cliente-lis/cliente-lis.component';
 import { EmpresaCadaComponent } from './empresa-cada/empresa-cada.component';
 import { EmpresaListaComponent } from './empresa-lista/empresa-lista.component';
 import { AuthService } from './auth.service';
-
+import { TableModule } from 'primeng/table';
 import { SobreMimComponent } from './sobre-mim/sobre-mim.component';
 
 import { FormsModule } from '@angular/forms';
@@ -35,7 +35,9 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     AppRoutingModule,
     ButtonModule,
-    MenubarModule
+    MenubarModule,
+    TableModule,
+    
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
