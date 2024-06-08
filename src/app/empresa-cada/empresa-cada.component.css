@@ -153,7 +153,7 @@ textarea {
 input:focus,
 textarea:focus,
 select:focus {
-    box-shadow: 0 0 2pt 2pt rgb(253, 253, 253);
+    /* box-shadow: 0 0 2pt 2pt rgb(253, 253, 253); */
 }
 
 input[type="checkbox"],
@@ -171,6 +171,26 @@ legend,
 fieldset>label:last-child {
     margin-bottom: 20px;
 }
+
+.p-ask{
+    font-size: 1rem;
+    color: white;
+    font-weight: 600;
+}
+/* 
+.checks{
+    margin-top: ;
+} */
+
+.checks input {
+   display: inline-block;
+   margin-left: 10px;
+}
+.checks input label{
+    display: inline;
+}
+
+
 
 @media all and (max-width: 1050px) {
     main {

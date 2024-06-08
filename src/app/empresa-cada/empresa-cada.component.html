@@ -16,15 +16,21 @@
                 </div>
                 <div>
                     <label for="email" id="email-label">Colaboradores*</label>
-                    <input type="email" id="email" pattern=".+@.+..+" placeholder="informe o numero de colaboradores" required>
+                    <input type="number" id="email"  placeholder="informe o numero de colaboradores" required>
                 </div>
                 <div>
-                    <label for="name" id="name-label">Ativa?*</label>
+                    <label for="name" id="name-label">Nome*</label>
                     <input type="text" id="name" placeholder="Enter your name" required>
                 </div>
                 <div>
-                    <label for="name" id="name-label">Name*</label>
-                    <input type="text" id="name" placeholder="Enter your name" required>
+                    <p class="p-ask">Ativa?</p>
+                    <br/>
+                    <div class="checks">
+                    <input type="radio" name="isActive" id="checkbox" value="isActive">
+                    <label for="isActive"> Sim</label>
+                    <input type="radio" name="isActive" id="checkbox" value="isActive">
+                    <label for="isActive"> Não</label>
+                    </div>
                 </div>
                 <input type="submit" value="Submit" id="submit">
             </form>
