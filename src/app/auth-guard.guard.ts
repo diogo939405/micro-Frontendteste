@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-    const loggedIn = true; // this.authService.logedIn; // or false get you logged in status from state  
+    const loggedIn = this.authService.logedIn; // or false get you logged in status from state  
     if (loggedIn) {
       return true;
     }

@@ -14,7 +14,6 @@ const routes: Routes = [
   { path: 'empresa/lista', component: EmpresaListaComponent, canActivate: [AuthGuard] },
   { path: 'cliente/cadastro', component: ClienteCadaComponent, canActivate: [AuthGuard] },
   { path: 'cliente/lista', component: ClienteLisComponent, canActivate: [AuthGuard] },
-
 ];
 
 
