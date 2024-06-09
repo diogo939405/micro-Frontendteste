@@ -38,10 +38,11 @@ main {
 
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
     word-spacing: 3px;
     letter-spacing: 2px;
+
 
 }
 
@@ -62,10 +63,10 @@ main {
 form {
     margin-top: 15px;
     padding: 10px 50px;
-    background-color: #F08000;
+    background-color: #e4dbd1;
     justify-content: center;
     border-radius: 25px;
-    border: 1px solid white;
+    border: 1px solid rgb(237, 189, 189);
 
 }
 
@@ -82,6 +83,8 @@ label {
     font-family: 'arial';
     font-size: 0.9rem;
     font-weight: 700;
+    color: chocolate;
+
 }
 
 fieldset {
@@ -104,13 +107,15 @@ fieldset>label::after {
 }
 
 #name,
+#colab,
+#ativo,
 #email,
 #number,
 #dropdown,
 textarea {
-    background-color: rgb(250, 250, 250);
+    background-color: rgb(242, 230, 230);
     width: 100%;
-    border: 1px solid #000;
+    border: 1px solid #eeb3b3;
     padding: 10px;
     border-radius: 3px;
     cursor: text;

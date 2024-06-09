@@ -1,31 +1,63 @@
-<div class="card">
-    <p-table [value]="products" styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '80rem' }">>
+<div class="container">
+    <p-panel header="Lista de Parceiros" [style]="{ 
+    width: '70rem',  
+    fontFamily: 'fangsong',  
+    fontSize: '20px',  
+    border: '2px solid black',  
+    borderRadius: '9px',
+    
+}">
         <ng-template pTemplate="header">
-            <tr>
-                <th>Code</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Quantity</th>
-            </tr>
+            <div class="flex align-items-center gap-2">
+            </div>
         </ng-template>
-        <ng-template pTemplate="body" let-product>
-            <tr>
-                <td>{{ product.description }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.repositoryGit }}</td>
-                <td>{{ product.urlDoc }}</td>
-                <td>
-                    <div class="icons">
-                        <span class="material-icons" id="lixo">delete</span>
-                    </div>
-                </td>
-                <td>
-                    <div class="icons">
-                        <span class="material-icons" id="edit">edit</span>
-                    </div>
-                </td>
-            </tr>
-        </ng-template>
-    </p-table>
+        <p-confirmPopup />
+        <p-toast />
+        <p-table #dt1 [value]="clientes" [scrollable]="true" scrollHeight="60vh" dataKey="id" [rows]="10"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
+            currentPageReportTemplate="Exibindo as {first} de {last} do total {totalRecords} registros"
+            [globalFilterFields]="['name', 'description', 'urlDoc', 'repositoryGit', 'clients', 'projects', 'status']">
+            <ng-template pTemplate="caption">
+                <div class="flex">
+                    <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
+                        (click)="clear(dt1)"></button>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+                            placeholder="Search keyword" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pFrozenColumn>Excluir</th>
+                    <th pFrozenColumn>Editar</th>
+                    <th style="width: 30%;" pSortableColumn="companyName" pFrozenColumn>Nome</th>
+                    <th style="width: 50px;" pSortableColumn="collaboratorsCount">Colaboradores</th>
+                    <th pSortableColumn="lastSubmit">Envio</th>
+                    <th pSortableColumn="isActive">Ativo</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-cliente>
+                <tr>
+                    <td pFrozenColumn><p-button icon="pi pi-trash" severity="danger" rounded="true" class="p-button-sm"
+                            (click)="excluirParceiro($event, cliente)" id="lixo"></p-button>
+                    </td>
+                    <td pFrozenColumn>
+                        <div class="icons">
+                            <p-button icon="pi pi-pencil" severity="danger" rounded="true" class="p-button-sm"
+                                (click)="editarParceiro(cliente)" id="lixo"></p-button>
+                        </div>
+                    </td>
+                    <td style="width: 30%;" pFrozenColumn>{{ cliente.companyName }}</td>
+                    <td>{{ cliente.collaboratorsCount }}</td>
+                    <td>{{ cliente.lastSubmit | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+                    <td><p-toggleButton [(ngModel)]="cliente.isActive" onLabel="Ativo" offLabel="Inativo" /></td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p-panel>
+    <p-dialog header="Cadastro de Parceiros - Edição" [modal]="true" [(visible)]="visible" [style]="{ width: '75rem' }">
+        <app-cliente-cada></app-cliente-cada>
+    </p-dialog>
 </div>
-

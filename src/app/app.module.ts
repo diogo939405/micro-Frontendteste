@@ -6,6 +6,14 @@ import { MenubarModule } from 'primeng/menubar';
 import { PanelModule } from 'primeng/panel';
 import { AvatarModule } from 'primeng/avatar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ToastModule } from 'primeng/toast';
+import { DialogModule } from 'primeng/dialog';
+
+
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,10 +54,13 @@ import { FormsModule } from '@angular/forms';
     PanelModule,
     TableModule,
     AvatarModule,
-
-
+    ToggleButtonModule,
+    ConfirmDialogModule,
+    ConfirmPopupModule,
+    ToastModule,
+    DialogModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, ConfirmationService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

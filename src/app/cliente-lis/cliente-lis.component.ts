@@ -1,35 +1,75 @@
 import { Component } from '@angular/core';
+import { Cliente } from '../cliente.interface';
+import { ClienteService } from '../cliente.service';
+import { Table } from 'primeng/table';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-cliente-lis',
   templateUrl: './cliente-lis.component.html',
-  styleUrls: ['./cliente-lis.component.css']
+  styleUrls: ['./cliente-lis.component.css'],
+  providers: [ConfirmationService, MessageService]
 })
 export class ClienteLisComponent {
-  products: any = []
-  ngOnInit() {
-    this.products = [
-      {
-        "createdAt": "2023-05-17T07:50:15.683Z",
-        "name": "Wiegand LLC - DIOGO",
-        "description": "Minus voluptas corporis animi accusantium nemo aspernatur adipisci eaque temporibus.\nAmet omnis accusantium iusto ab eveniet omnis id.",
-        "repositoryGit": "repositoryGit 62",
-        "urlDoc": "http://insistent-hanger.org",
-        "clients": [17245, 36673, "E(\u003C#@RlHMN",
-          "\\O7iX%!PTT",
-          3018, "&#FcsO^-(h",
-          43287, 24917, ",[;{Q'F98P",
-          "W;vf[VX\u003Emu"
-        ],
-        "projects": [98795, "$8oEb#0tzS",
-          7004, "5gyD4M$]Dd",
-          "?NBGfL0IRs",
-          "B=Rn%)Xy1\u003C",
-          4835, "d+9Y5S%9s%",
-          94690, "!Q%4?B,;7Z"
-        ],
-        "id": "62"
-      },
-    ]
+  clientes: Cliente[] = [];
+  loading: boolean = true;
+  visible = false;
+
+  constructor(
+    private readonly clienteService: ClienteService, private confirmationService: ConfirmationService, private messageService: MessageService
+  ) { }
+
+
+
+  ngOnInit(): void {
+    this.carregarParceiros();
   }
+
+  carregarParceiros() {
+    this.clienteService.recuperarClientes().subscribe((response: Cliente[]) => {
+      console.log(response, 'res');
+      this.clientes = response
+      this.loading = false;
+    })
+
+    this.clienteService.recuperarClientesPorId('62').subscribe((response: any[]) => {
+      console.log(response, 'res por id');
+    })
+  }
+
+  clear(table: Table) {
+    table.clear();
+  }
+
+  editarParceiro(cliente: Cliente) {
+    console.log('editar parceiro')
+    this.clienteService.clienteAtual = cliente
+    this.showDialog();
+  }
+
+
+  excluirParceiro(event: Event, cliente: Cliente) {
+    console.log('excluir parceiro')
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Confirma a exclusão do parceiro?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.clienteService.excluirClientesPorId(cliente.id).subscribe((response: any) => {
+          console.log(response, 'response');
+          this.messageService.add({ severity: 'info', summary: 'Excluido', detail: 'Parceiro Excluído', life: 3000 });
+          this.carregarParceiros();
+        })
+
+      },
+      reject: () => {
+        this.messageService.add({ severity: 'error', summary: 'Cancelado', detail: 'Exclusão cancelada', life: 3000 });
+      }
+    });
+  }
+
+  showDialog() {
+    this.visible = true;
+  }
+
 }

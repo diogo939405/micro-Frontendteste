@@ -27,19 +27,6 @@ export class EmpresaListaComponent implements OnInit {
     this.empresaService.recuperarEmpresasPorId('62').subscribe((response: any[]) => {
       console.log(response, 'res por id');
     })
-    // const emp: Empresa = {
-    //   "createdAt": '',
-    //   "clients": [],
-    //   "description": 'teste diogo',
-    //   "name": 'test ',
-    //   "projects": [],
-    //   "repositoryGit": 'git',
-    //   "urlDoc": '..',
-    // }
-    // this.empresaService.adicionarEmpresas(emp).subscribe((response: any[]) => {
-    //   console.log(response, 'res por id');
-    // })
-
   }
 
   clear(table: Table) {
