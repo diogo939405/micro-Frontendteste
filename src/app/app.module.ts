@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
@@ -14,6 +15,10 @@ import { EmpresaCadaComponent } from './empresa-cada/empresa-cada.component';
 import { EmpresaListaComponent } from './empresa-lista/empresa-lista.component';
 import { AuthService } from './auth.service';
 
+
+
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +32,8 @@ import { AuthService } from './auth.service';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     AppRoutingModule,
     ButtonModule,
     MenubarModule

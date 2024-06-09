@@ -7,9 +7,12 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  usuario = '';
+  senha = '';
   constructor(private authService: AuthService) { }
 
   logar() {
-
+    console.log(this.usuario, this.senha);
+    return '';
   }
 }
