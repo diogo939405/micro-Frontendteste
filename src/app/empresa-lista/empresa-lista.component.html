@@ -1,40 +1,69 @@
-<div class="card">
-    <p-table #dt1 [value]="empresas" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
-        [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [globalFilterFields]="['name', 'description', 'urlDoc']">
-
+<div class="container">
+    <p-panel header="Lista de Empresas" [style]="{ 
+    width: '70rem',  
+    fontFamily: 'fangsong',  
+    fontSize: '20px',  
+    border: '2px solid black',  
+    borderRadius: '9px',
+    
+}">
         <ng-template pTemplate="header">
-            <tr>
-                <th pSortableColumn="name">Nome</th>
-                <th pSortableColumn="description">Descrição</th>
-                <th pSortableColumn="createAt">DtCriação</th>
-                <th pSortableColumn="repositoryGit">Git Reposiroty</th>
-                <th pSortableColumn="urlDoc">Url Doc</th>
-                <th pSortableColumn="clients">Clientes</th>
-                <th pSortableColumn="projects">Projetos</th>
-            </tr>
+            <div class="flex align-items-center gap-2">
+                <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" size="large"
+                    shape="circle" />
+                <span class="font-bold">
+                    Amy Elsner
+                </span>
+            </div>
         </ng-template>
-        <ng-template pTemplate="body" let-empresa>
-            <tr>
-                <td>{{ empresa.name }}</td>
-                <td>{{ empresa.description }}</td>
-                <td>{{ empresa.createAt }}</td>
-                <td>{{ empresa.repositoryGit }}</td>
-                <td>{{ empresa.urlDoc }}</td>
-                <td>{{ empresa.clients }}</td>
-                <td>{{ empresa.projects }}</td>
-                <td>
-                    <div class="icons">
-                        <span class="material-icons" id="lixo">delete</span>
-                    </div>
-                </td>
-                <td>
-                    <div class="icons">
-                        <span class="material-icons" id="edit">edit</span>
-                    </div>
-                </td>
-            </tr>
-        </ng-template>
-    </p-table>
+
+        <p-table #dt1 [value]="empresas" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
+            currentPageReportTemplate="Exibindo as {first} de {last} do total {totalRecords} registros"
+            [globalFilterFields]="['name', 'description', 'urlDoc', 'repositoryGit', 'clients', 'projects', 'status']">
+            <ng-template pTemplate="caption">
+                <div class="flex">
+                    <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
+                        (click)="clear(dt1)"></button>
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+                            placeholder="Search keyword" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="name">Nome</th>
+                    <th pSortableColumn="description">Descrição</th>
+                    <th pSortableColumn="createAt">DtCriação</th>
+                    <th pSortableColumn="repositoryGit">Git Reposiroty</th>
+                    <th pSortableColumn="urlDoc">Url Doc</th>
+                    <th pSortableColumn="clients">Clientes</th>
+                    <th pSortableColumn="projects">Projetos</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-empresa>
+                <tr>
+                    <td>{{ empresa.name }}</td>
+                    <td>{{ empresa.description }}</td>
+                    <td>{{ empresa.createAt }}</td>
+                    <td>{{ empresa.repositoryGit }}</td>
+                    <td>{{ empresa.urlDoc }}</td>
+                    <td>{{ empresa.clients }}</td>
+                    <td>{{ empresa.projects }}</td>
+                    <td>
+                        <div class="icons">
+                            <span class="material-icons" id="lixo">delete</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="icons">
+                            <span class="material-icons" id="edit">edit</span>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p-panel>
 </div>

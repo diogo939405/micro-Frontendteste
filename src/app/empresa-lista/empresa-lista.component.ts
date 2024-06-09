@@ -21,6 +21,7 @@ export class EmpresaListaComponent implements OnInit {
     this.empresaService.recuperarEmpresas().subscribe((response: Empresa[]) => {
       console.log(response, 'res');
       this.empresas = response
+      this.loading = false;
     })
 
     this.empresaService.recuperarEmpresasPorId('62').subscribe((response: any[]) => {
@@ -43,6 +44,6 @@ export class EmpresaListaComponent implements OnInit {
 
   clear(table: Table) {
     table.clear();
-}
+  }
 }
 

@@ -3,8 +3,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
-// import { IconFieldModule } from 'primeng/iconfield';
-// import { InputIconModule } from 'primeng/inputicon';
+import { PanelModule } from 'primeng/panel';
+import { AvatarModule } from 'primeng/avatar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,15 +37,17 @@ import { FormsModule } from '@angular/forms';
     SobreMimComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
     ButtonModule,
     MenubarModule,
-    // IconFieldModule,
+    PanelModule,
     TableModule,
-    
+    AvatarModule,
+
+
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

@@ -1,22 +1,33 @@
-.icons{
+.icons {
     display: inline;
     margin: 0px auto;
     cursor: pointer;
 }
 
-.icons:hover{
+.icons:hover {
     /* background-color: aqua; */
 }
 
-#edit{
+#edit {
     margin: 0 auto;
 }
 
-#edit:hover{
+#edit:hover {
     background-color: aqua;
-    
+
 }
 
-#lixo:hover{
-        background-color: aqua;
+#lixo:hover {
+    background-color: aqua;
+}
+
+.container {
+    /* height: 80vh; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item {
+    width: 10em;
 }
