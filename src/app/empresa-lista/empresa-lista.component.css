@@ -1,0 +1,22 @@
+.icons{
+    display: inline;
+    margin: 0px auto;
+    cursor: pointer;
+}
+
+.icons:hover{
+    /* background-color: aqua; */
+}
+
+#edit{
+    margin: 0 auto;
+}
+
+#edit:hover{
+    background-color: aqua;
+    
+}
+
+#lixo:hover{
+        background-color: aqua;
+}
