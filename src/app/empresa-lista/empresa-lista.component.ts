@@ -32,5 +32,23 @@ export class EmpresaListaComponent implements OnInit {
   clear(table: Table) {
     table.clear();
   }
+
+  editarEmpresa(empresa: Empresa) {
+    console.log('editar parceiro')
+    this.empresaService.empresaAtual = empresa
+    this.showDialog();
+
+  }
+
+  excluirEmpresa(event: Event, empresa: Empresa) {
+    this.empresaService.excluirEmpresasPorId(empresa.id).subscribe((response: Empresa[]) => {
+      console.log(response, 'excluir empresa');
+      this.empresas = response;
+    })
+  }
+
+  showDialog() {
+    this.empresaService.visible = true;
+  }
 }
 

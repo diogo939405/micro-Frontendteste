@@ -13,10 +13,10 @@ export class ClienteCadaComponent {
   }
 
   atualizar() {
+    //TODO Colocar o close Dialog
     this.clienteService.clienteAtual.lastSubmit = Date.now().toString();
     this.clienteService.atualizarClientes(this.clienteService.clienteAtual, this.clienteService.clienteAtual.id).subscribe((response: Cliente[]) => {
       console.log(response, 'res');
     })
   }
-
 }

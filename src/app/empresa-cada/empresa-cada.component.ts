@@ -21,11 +21,6 @@ export class EmpresaCadaComponent {
 
   gravar() {
     console.log('gravar empresa', this.empresa);
-    this.empresaService.excluirEmpresasPorId('159').subscribe((response: Empresa[]) => {
-      console.log('EXCLUIDO ', response, 'res por id');
-    });
-    this.empresa.createdAt = new Date();
-    this.empresa.id = 300;
     this.empresaService.adicionarEmpresas(this.empresa).subscribe((response: any) => {
       console.log(response, 'res por id');
     });

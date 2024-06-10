@@ -11,6 +11,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ToastModule } from 'primeng/toast';
 import { DialogModule } from 'primeng/dialog';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -59,6 +60,7 @@ import { FormsModule } from '@angular/forms';
     ConfirmPopupModule,
     ToastModule,
     DialogModule,
+    InputNumberModule,
   ],
   providers: [AuthService, ConfirmationService, MessageService],
   bootstrap: [AppComponent]

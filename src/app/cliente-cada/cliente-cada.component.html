@@ -8,8 +8,12 @@
             </div>
             <div>
                 <label for="colab" id="name-label">Colaboradores*</label>
-                <input type="email" id="colab" [(ngModel)]="clienteService.clienteAtual.collaboratorsCount"
-                    [ngModelOptions]="{standalone: true}" placeholder="Qtd de colaboradores" required>
+                <!-- <input type="email" id="colab" [(ngModel)]="clienteService.clienteAtual.collaboratorsCount"
+                    [ngModelOptions]="{standalone: true}" placeholder="Qtd de colaboradores" required> -->
+
+                <p-inputNumber id="colab" [(ngModel)]="clienteService.clienteAtual.collaboratorsCount"
+                    [ngModelOptions]="{standalone: true}" inputId="withoutgrouping" [useGrouping]="false" />
+
             </div>
             <div>
                 <label for="ativo" id="name-label">Ativo*</label>
